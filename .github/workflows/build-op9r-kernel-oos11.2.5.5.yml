@@ -1,7 +1,7 @@
 name: build-op9r-kernel-oos11.2.5.5
 
 on:
-  workflow_dispatch: # 
+  workflow_dispatch:
     inputs:
       branch:
         description: 'Branch name'
@@ -87,7 +87,7 @@ jobs:
 
     steps:
     - name: use which branch
-    - uses: actions/checkout@v4
+      uses: actions/checkout@v4
       with:
         ref: ${{ github.event.inputs.branch }}
 
