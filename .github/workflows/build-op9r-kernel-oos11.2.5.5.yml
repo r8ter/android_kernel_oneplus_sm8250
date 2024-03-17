@@ -10,6 +10,7 @@ on:
         default: 'oneplus/SM8250_R_11.0_9R'
         options: 
         - 'oneplus/SM8250_R_11.0_9R'
+        - 'main'
         
       clang_link:
         description: 'Clang download link'
@@ -86,10 +87,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: use which branch
-      uses: actions/checkout@v4
+    - uses: actions/checkout@v4
       with:
         ref: ${{ github.event.inputs.branch }}
+    - name: use which branch
+      run: |
+        ls -alhF .
 
     - name: install packages
       run: |
@@ -188,8 +191,3 @@ jobs:
             make -j$(nproc --all) CC=clang O=out ARCH=arm64 CLANG_TRIPLE=aarch64-linux-gnu- ${{ github.event.inputs.extra_cmds }} ${{ env.GCC_64 }} ${{ env.GCC_32 }} -B -w -s
         fi
         ls -alhF --color out/arch/arm64/boot/
-
-
-
-
-
