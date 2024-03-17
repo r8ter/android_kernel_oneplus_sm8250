@@ -87,7 +87,7 @@ jobs:
     
     steps:
     - name: use which branch
-    - uses: actions/checkout@v4
+      uses: actions/checkout@v4
       with:
         ref: ${{ github.event.inputs.branch }}
         
